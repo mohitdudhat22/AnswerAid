@@ -1,20 +1,23 @@
 {
-    "manifest_version": 3,
-    "name": "My Simple Extension",
-    "version": "1.0",
-    "description": "A simple Chrome extension built with HTML, CSS, and JavaScript.",
-    "permissions": ["activeTab", "scripting"],
-    "background": {
+  "manifest_version": 3,
+  "name": "AnswerAid",
+  "version": "1.0",
+  "description": "A simple Chrome extension built with HTML, CSS, and JavaScript.",
+  "permissions": [
+      "activeTab",
+      "scripting",
+      "tabs"
+  ],
+  "background": {
       "service_worker": "background.js"
-    },
-    "action": {
+  },
+  "action": {
       "default_popup": "popup.html"
-    },
-    "content_scripts": [
+  },
+  "content_scripts": [
       {
-        "matches": ["<all_urls>"],
-        "js": ["content.js"]
+          "matches": ["<all_urls>"],
+          "js": ["content.js"]
       }
-    ]
-  }
-  
+  ]
+}

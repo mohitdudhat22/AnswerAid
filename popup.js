@@ -44,14 +44,13 @@ document.getElementById('changeText').addEventListener('click', () => {
 document.getElementById('geminiSaveMe').addEventListener('click', () => {
     const data = document.querySelector('.output').textContent;
     console.log(data);
-    const outputElement = document.querySelector('.output');
     
     fetch('http://localhost:3000/api/generate', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ prompt: data + 'Give me an answer from this question and options. Make Sure you give me the answer in html formate and Give me only the answers with it corresponding question index. I dont want any other text like question it self or its option etc' }),
+        body: JSON.stringify({ prompt: data + 'Give me an answer from this question and options. Make Sure you give me the answer in html formate and Give me only the answers with it corresponding question index. I dont want any other text like question it self or its option etc.and Make Sure Font Size Should be 18px ' }),
     })
     .then(response => {
         if (!response.ok) {
@@ -72,6 +71,39 @@ document.getElementById('geminiSaveMe').addEventListener('click', () => {
     });
 });
 
+document.getElementById('openInNewPage').addEventListener('click', () => {
+    // Get the content from the popup
+    const content = document.querySelector('.output').innerHTML;
+
+    // Create a full HTML string with the content
+    const html = `
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>New Page</title>
+            <style>
+                /* Add any styles you need here */
+                body {
+                    font-family: Arial, sans-serif;
+                    margin: 20px;
+                }
+            </style>
+        </head>
+        <body>
+            ${content}
+        </body>
+        </html>
+    `;
+
+    // Create a new Blob with the HTML content and generate a URL for it
+    const blob = new Blob([html], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+
+    // Open the URL in a new tab
+    chrome.tabs.create({ url: url });
+});
 
 
 // 'Save & Next'
