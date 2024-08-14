@@ -42,3 +42,5 @@ document.getElementById('changeText').addEventListener('click', () => {
 });
 
 // 'Save & Next'
+// option -> options
+// rightQuestionContent -> p -> question
