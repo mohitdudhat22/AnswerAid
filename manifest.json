@@ -1,23 +1,6 @@
 {
-  "manifest_version": 3,
-  "name": "AnswerAid",
-  "version": "1.0",
-  "description": "A simple Chrome extension built with HTML, CSS, and JavaScript.",
-  "permissions": [
-      "activeTab",
-      "scripting",
-      "tabs"
-  ],
-  "background": {
-      "service_worker": "background.js"
-  },
-  "action": {
-      "default_popup": "popup.html"
-  },
-  "content_scripts": [
-      {
-          "matches": ["<all_urls>"],
-          "js": ["content.js"]
-      }
-  ]
-}
+    "manifest_version": 3,
+    "name": "Chrome extension",
+    "version": "1.0.0",
+    "action": { "default_popup": "index.html" }
+  }
